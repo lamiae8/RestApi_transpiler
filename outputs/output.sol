@@ -1,1 +1,1 @@
-hello hello hello contract
+// hello hello hello contract
