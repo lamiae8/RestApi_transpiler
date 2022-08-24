@@ -29,17 +29,7 @@ namespace policies{
         type = "double"
     }
 
-     policy transfer{
-        target clause actionId. == "transfer" and resourceType. =="bank account"
-        apply firstApplicable
-        rule allow{
-            condition amount. <= 100 and permission. == "true"
-            permit
-        }
-        rule denyTransfer{
-            deny
-        }
-     }
+   
      
 }
 

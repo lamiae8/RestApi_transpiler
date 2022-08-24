@@ -75,7 +75,7 @@ app.post('/post',(req,res)=>{
        
         const nameinput =file.originalname;
         const nameoutput=nameinput.slice(0,-5);
-        exec(`LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/${nameinput} ./outputs/OutputOf_${nameoutput}.sol`,
+        exec(`export LD_LIBRARY_PATH=/home/lamiae/Downloads/restApi/lib && LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/${nameinput} ./outputs/OutputOf_${nameoutput}.sol`,
             function (error, stdout, stderr) {
                 console.log('stdout: ' + stdout +'lamiaaae ' + file.originalname.slice(0, -5));
                 console.log('stderr: ' + stderr );
