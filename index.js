@@ -66,7 +66,7 @@ app.post('/post',(req,res)=>{
         :
         libray......   ./AlfaToSol input.alfa ouput.sol
         :
-        :
+        :LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/${nameinput} ./outputs/OutputOf_${nameoutput}.sol
         :
 
         */
