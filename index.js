@@ -13,23 +13,16 @@ app.use(cors({
 const Port =8080;
 
 app.use(express.json())
+
 app.listen(
     Port,
-    () =>console.log(`hey http://localhost:${Port}`)
+    () =>console.log(`restApi on http://localhost:${Port}`)
 )
-app.get('/get',(req,res)=>{
-    res.status(200).send({
-        msg:'hey limy'
-    })
-    });
+app.use(express.static(path.join (__dirname + 'build')))
 
-app.post('/post',(req,res)=>{
-    const {id} =req.body;
-    console.log(id);
-    res.send({
-       msg: `${id}`
-    });
-    });
+app.get('/*',(req,res) => {
+    res.sendFile(path.join(__dirname,'build', 'index.html'))
+})
 
 
     const multer = require('multer');
@@ -56,29 +49,13 @@ app.post('/post',(req,res)=>{
             return next(error)
         }
 
-        /*
-        :
-        :
-        :
-        :
-        :
-        HNA CODE DYAL CONVERTION ALFATOSOL
-        :
-        :
-        libray......   ./AlfaToSol input.alfa ouput.sol
-        :
-        :LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/${nameinput} ./outputs/OutputOf_${nameoutput}.sol
-        :
-
-        */
-
-        // 
+            // AlfaToSol command 
        
         const nameinput =file.originalname;
         const nameoutput=nameinput.slice(0,-5);
-        exec(`export LD_LIBRARY_PATH=/home/lamiae/Downloads/restApi/lib && LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/${nameinput} ./outputs/OutputOf_${nameoutput}.sol`,
+        exec(`export LD_LIBRARY_PATH=./lib && LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/${nameinput} ./outputs/OutputOf_${nameoutput}.sol`,
             function (error, stdout, stderr) {
-                console.log('stdout: ' + stdout +'lamiaaae ' + file.originalname.slice(0, -5));
+                console.log('stdout: ' + stdout );
                 console.log('stderr: ' + stderr );
                 if (error !== null) {
                      console.log('exec error: ' + error);
@@ -113,7 +90,7 @@ writeStream.end();
 
 
 // convert the file writeStream to solidity 
-exec(`export LD_LIBRARY_PATH=/home/lamiae/Downloads/restApi/lib && LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/inputText_${i}.alfa ./outputs/OutputOf_inputText_${i}.sol`,
+exec(`export LD_LIBRARY_PATH=./lib && LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/libantlr4-runtime.so.4.7.1/ ./AlfaToSol ./uploads/inputText_${i}.alfa ./outputs/OutputOf_inputText_${i}.sol`,
 function (error, stdout, stderr) {
     console.log('stdout: ' + stdout );
     console.log('stderr: ' + stderr );
