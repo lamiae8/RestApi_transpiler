@@ -10,13 +10,13 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials:true,
 }));
-const Port =8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json())
 
 app.listen(
-    Port,
-    () =>console.log(`restApi on http://localhost:${Port}`)
+    PORT,
+    () =>console.log(`restApi on http://localhost:${PORT}`)
 )
 app.use(express.static(path.join (__dirname + '/public')))
 
