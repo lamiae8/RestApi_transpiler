@@ -10,7 +10,7 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials:true,
 }));
-const PORT = 8080;
+const PORT = process.env.PORT;
 
 app.use(express.json())
 
