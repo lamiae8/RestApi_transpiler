@@ -7,16 +7,16 @@ const app =express();
 const cors =require('cors');
 var exec = require('child_process').exec;
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.API_URL,
     credentials:true,
 }));
-const PORT = 8080;
+const PORT = process.env.PORT ;
 
 app.use(express.json())
 
 app.listen(
     PORT,
-    () =>console.log(`restApi on http://localhost:${PORT}`)
+    () =>console.log(`restApi on ${PORT}`)
 )
 app.use(express.static(path.join (__dirname + '/public')))
 
