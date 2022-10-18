@@ -145,7 +145,7 @@ app.post('/transpileText', (req, res, next) => {
         }
           console.log(data)
       });   */
-    exec(` cd ./hardhat-project/ && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
+    exec(` npm install --save-dev hardhat && (npm install dotenv --save) && (npm install --save-dev @nomiclabs/hardhat-ethers "ethers@^5.0.0") && (cd ./hardhat-project/) && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
         function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + stderr);
