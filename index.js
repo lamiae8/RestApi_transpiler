@@ -134,10 +134,10 @@ app.post('/transpileText', (req, res, next) => {
             error.httpStatusCode = 400
             return next(error)
         }
-       /*  var options = {
+         var options = {
             root: path.join('./DeployContracts/')
         }; 
-        */
+        
     //put it in hardhat->contracts and compile it and return the abi + address
    /* fs.writeFile('./hardhat-project/contracts/HelloWorld.sol' ,  file, function(err,data){
         if (err){
@@ -146,7 +146,7 @@ app.post('/transpileText', (req, res, next) => {
           console.log(data)
       });   */
      // exec(`cd ./hardhat-project/ && (npm install --save-dev hardhat@2.12.0) && (npm install dotenv --save) && (npm install --save-dev @nomiclabs/hardhat-ethers "ethers@^5.0.0") && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
-      exec(`(npm install --save-dev hardhat@2.12.0) && (cd ./hardhat-project/) && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
+      exec(`(cd ./hardhat-project/) && (npx hardhat compile)`,
         function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + stderr);
