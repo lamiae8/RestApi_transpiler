@@ -139,7 +139,7 @@ app.post('/transpileText', (req, res, next) => {
         }; 
         */
     //put it in hardhat->contracts and compile it and return the abi + address
-        exec(` cp -r file ./hardhat-project/contracts/ && (cd ./hardhat-project/) && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
+        exec(` cp -r ${file} ./hardhat-project/contracts/ && (cd ./hardhat-project/) && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
         function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + stderr);
