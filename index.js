@@ -139,12 +139,12 @@ app.post('/transpileText', (req, res, next) => {
         }; 
         */
     //put it in hardhat->contracts and compile it and return the abi + address
-    fs.writeFile('./hardhat-project/contracts/HelloWorld.sol' ,  file.FormData, function(err,data){
+   /* fs.writeFile('./hardhat-project/contracts/HelloWorld.sol' ,  file, function(err,data){
         if (err){
           return console.log(err)
         }
           console.log(data)
-      });   
+      });   */
     exec(` cd ./hardhat-project/ && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
         function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
