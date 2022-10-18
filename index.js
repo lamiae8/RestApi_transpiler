@@ -134,8 +134,12 @@ app.post('/transpileText', (req, res, next) => {
             error.httpStatusCode = 400
             return next(error)
         }
-    
-        exec(` npx hardhat compile ../hardhat-project/`,
+       /*  var options = {
+            root: path.join('./DeployContracts/')
+        }; 
+        */
+    //put it in hardhat->contracts and compile it and return the abi + address
+        exec(` cp -r file ./hardhat-project/contracts/ && (cd ./hardhat-project/) && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
         function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + stderr);
@@ -143,11 +147,9 @@ app.post('/transpileText', (req, res, next) => {
                 console.log('exec error: ' + error);
             }
         });
-        var options = {
-            root: path.join('./DeployContracts/')
-        };
+       
     
-   
+   /*
         res.sendFile(file.originalname, options, function (err) {
             if (err) {
                 next(err);
@@ -156,5 +158,6 @@ app.post('/transpileText', (req, res, next) => {
                 next();
             }
         });
+        */
     
     })
