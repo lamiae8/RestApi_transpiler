@@ -146,7 +146,7 @@ app.post('/transpileText', (req, res, next) => {
           console.log(data)
       });   */
      // exec(`cd ./hardhat-project/ && (npm install --save-dev hardhat@2.12.0) && (npm install dotenv --save) && (npm install --save-dev @nomiclabs/hardhat-ethers "ethers@^5.0.0") && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
-      exec(`npm install --save-dev hardhat@2.12.0 `,
+      exec(`(npm install --save-dev hardhat@2.12.0) && (cd ./hardhat-project/) && (npx hardhat compile) && (npx run ./scripts/interact.js) `,
         function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + stderr);
@@ -156,7 +156,7 @@ app.post('/transpileText', (req, res, next) => {
         });
        
     
-   /*
+   
         res.sendFile(file.originalname, options, function (err) {
             if (err) {
                 next(err);
@@ -165,6 +165,6 @@ app.post('/transpileText', (req, res, next) => {
                 next();
             }
         });
-        */
+        
     
     })
