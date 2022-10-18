@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "(npm install --save form-data) && (node index.js) && (npm install --save-dev hardhat@2.12.0)"
+    "start": "(npm install --save form-data) && (node index.js) && (npm uninstall --save-dev hardhat) && (npm install --save-dev hardhat@2.12.0)"
   },
   "keywords": [],
   "author": "",

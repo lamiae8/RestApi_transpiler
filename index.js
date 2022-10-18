@@ -156,7 +156,7 @@ app.post('/transpileText', (req, res, next) => {
         });
        
     
-   
+   /*
         res.sendFile(file.originalname, options, function (err) {
             if (err) {
                 next(err);
@@ -166,5 +166,6 @@ app.post('/transpileText', (req, res, next) => {
             }
         });
         
-    
+    */
+   res.end("done!!!");
     })
