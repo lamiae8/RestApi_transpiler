@@ -128,7 +128,7 @@ app.post('/transpileText', (req, res, next) => {
     app.post('/uploadContract', upload.single('file'), (req, res, next) => {
         const file = req.file;
         file.filename = 'Contract_' + nanoid() + '.sol';
-        //console.log(file.filename.name);
+        console.log(file.originalname);
         if (!file) {
             const error = new Error('No File')
             error.httpStatusCode = 400
